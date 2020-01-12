@@ -16,6 +16,10 @@
       ".cache/*"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pcbowers/uno.git"
+  },
   "author": "P. Christopher Bowers",
   "license": "ISC",
   "devDependencies": {
