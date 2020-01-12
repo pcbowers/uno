@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>UNO</title>
+    <link rel="stylesheet" href="./style.scss" />
+    <script src="./globals.js"></script>
+    <script>
+      var $ = globalVars.jquery;
+      var socket = globalVars.io();
+    </script>
+  </head>
+
+  <body>
+    <div id="gameTable">
+      <div>Center</div>
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+      <div>Item 4</div>
+      <div>Item 5</div>
+      <div>Item 6</div>
+    </div>
+  </body>
+
+  <script>
+    function setUpCircle() {
+      // let angle = ((rotate) * Math.PI) / 180;
+        // console.log(rotate);
+        // let a = Math.max(window.innerWidth, window.innerHeight);
+        // let b = Math.min(window.innerWidth, window.innerHeight);
+        // var radius2 =
+        //   (a * b) /
+        //   Math.sqrt(
+        //     Math.pow(a, 2) * Math.pow(Math.cos(angle), 2) +
+        //       Math.pow(b, 2) * Math.pow(Math.sin(angle), 2)
+        //   ) - 100;
+
+
+      var elements = $("#table").children("div:not(:first-child)");
+      var radius = window.innerHeight > window.innerWidth ? "37vw" : "37vh";
+
+      elements.each((i, element) => {
+        let rotate = (360 / elements.length) * i + 90;
+        $(element).css({
+          transform:
+            "translate(-50%, -50%) rotate(" +
+            rotate +
+            "deg) translate(" +
+            radius +
+            ") rotate(" +
+            -rotate +
+            "deg)"
+        });
+      });
+    }
+
+    $(window).resize(() => {
+      setUpCircle();
+    });
+
+    setUpCircle();
+  </script>
+</html>

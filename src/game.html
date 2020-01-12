@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>UNO 2</title>
+    <link rel="stylesheet" href="./style.scss" />
+    <script src="./globals.js"></script>
+    <script>
+      window.title = window.location.pathname.slice(
+        1,
+        window.location.pathname.length
+      );
+
+      window.$ = globalVars.jquery;
+      window.socket = globalVars.io({
+        query: {
+          path: title
+        }
+      });
+    </script>
+  </header>
+
+  <body>
+    <section class="hero is-fullheight" id="main-page">
+      <div class="has-text-weight-bold has-text-centered" id="stats">
+        <i class="fas fa-trophy"></i>
+      </div>
+
+      <div class="hero-body" id="game-intro">
+        <div class="box" style="margin: auto">
+          <div
+            class="has-text-centered is-size-1 is-uppercase has-text-weight-bold"
+            id="game-title"
+          ></div>
+          <hr />
+          <form id="form-intro" action="">
+            <div class="field has-addons">
+              <p class="control has-icons-left is-expanded">
+                <input
+                  class="input"
+                  type="text"
+                  id="name"
+                  placeholder="Player Name"
+                />
+                <span class="icon is-medium is-left">
+                  <i class="fas fa-gamepad"></i>
+                </span>
+              </p>
+              <div class="control">
+                <button class="button is-info">
+                  Play
+                </button>
+              </div>
+            </div>
+          </form>
+          <br />
+          <a class="link is-block has-text-centered" id="socket-roleSpectator">
+            Or View as Spectator
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-body" id="game-start">
+        <div class="box" style="margin: auto; width: 80%">
+          <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Undecided</p>
+                <p class="title" id="num-undecided">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading" id="title-spectator">Spectators</p>
+                <p class="title" id="num-spectator">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading" id="title-player">Players</p>
+                <p class="title" id="num-player">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading" id="title-ready">Ready</p>
+                <p class="title" id="num-ready">0</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="title">
+                  <button class="button is-info" id="socket-readyToStart">
+                    Ready To Begin?
+                  </button>
+                </p>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div id="game-main" style="margin: auto">
+        <div id="gameTable"></div>
+        <div
+          class="is-uppercase has-text-weight-bold has-text-centered"
+          id="uno"
+        >
+          uno
+        </div>
+      </div>
+    </section>
+
+    <div id="show-stats" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box" style="margin: 10px">
+          <div class="title has-text-centered is-uppercase" id="winner"></div>
+          <nav class="level" id="allStats"></nav>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <div id="choose-color" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <nav class="level">
+          <div class="level-item has-text-centered" id="color1">
+            <div>
+              <p class="heading is-size-2 is-uppercase has-text-weight-bold">
+                RED
+              </p>
+              <p class="title"></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered" id="color2">
+            <div>
+              <p class="heading is-size-2 is-uppercase has-text-weight-bold">
+                BLUE
+              </p>
+              <p class="title"></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered" id="color3">
+            <div>
+              <p class="heading is-size-2 is-uppercase has-text-weight-bold">
+                GREEN
+              </p>
+              <p class="title"></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered" id="color4">
+            <div>
+              <p class="heading is-size-2 is-uppercase has-text-weight-bold">
+                YELLOW
+              </p>
+              <p class="title"></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <div id="disconnect">
+      <div>
+        Player Disconnected... Wait for WIFI
+      </div>
+    </div>
+  </body>
+
+  <script src="./game.js"></script>
+</html>

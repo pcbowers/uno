@@ -1,0 +1,185 @@
+$primary: hsl(141, 53%, 53%);
+$background: rgb(199, 168, 168);
+$link: $background;
+$cardSize: 6;
+$cardSpace: 1.3;
+
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $background;
+}
+
+#main-page {
+  background-color: $background;
+}
+
+#game-main {
+  overflow: hidden;
+}
+
+#gameTable {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+#gameTable > div {
+  width: 80vw;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 10px;
+}
+
+#gameTable > div:first-child {
+  width: fit-content;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  z-index: 0;
+  display: inline-block;
+  border-radius: 10px;
+  width: #{$cardSize}em;
+  transition: all 0.2s linear;
+}
+
+#gameTable article.turn .card,
+#gameTable div.turn .card {
+  box-shadow: 0px 0px 20px 3px rgba(255, 255, 255, 0.75);
+}
+
+#gameTable article.swap .card,
+#gameTable div.swap .card {
+  box-shadow: 0px 0px 20px 3px rgba(125, 175, 250, 0.75);
+}
+
+#color1 {
+  background-color: rgb(250, 107, 107);
+}
+
+#color2 {
+  background-color: rgb(84, 144, 255);
+}
+
+#color3 {
+  background-color: rgb(94, 250, 133);
+}
+
+#color4 {
+  background-color: rgb(255, 229, 80);
+}
+
+[id^="color"] {
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.card.active {
+  width: #{$cardSize + 0.5}em;
+  z-index: 5;
+}
+
+.playerData {
+  z-index: 1;
+  position: absolute;
+  top: -1.2em;
+  line-height: 1em;
+  left: 0;
+}
+
+#uno,
+#stats {
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+  width: 3em;
+  height: 3em;
+  line-height: 3em;
+  left: 0;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.73);
+}
+
+#uno {
+  bottom: 0;
+}
+
+#stats {
+  top: 0;
+}
+
+#disconnect {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background-color: rgba(10, 10, 10, 0.86);
+}
+
+#disconnect>div {
+  position: absolute;
+  background-color: $white-ter;
+  color: $danger;
+  box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.73);
+  padding: 10px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border-radius: 0 0 10px 10px;
+}
+
+.otherCards {
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  display: inline-block;
+  border: 1px solid #494949;
+}
+
+.keepInline {
+  white-space: nowrap;
+}
+
+[id^="player"] {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.stack {
+  @for $i from 2 through 30 {
+    $stackAmount: -1 * $cardSize * ($i - 1) + ($cardSpace * ($i - 1));
+    .card:nth-child(#{$i}) {
+      transform: translateX(#{$stackAmount}em);
+    }
+  }
+}
+
+article {
+  &#deck,
+  &#discard {
+    display: inline-block;
+    padding: 5px;
+    width: 50%;
+  }
+}

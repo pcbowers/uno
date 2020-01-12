@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>UNO</title>
+    <link rel="stylesheet" href="./style.scss" />
+    <script src="./globals.js"></script>
+    <script>
+      window.$ = globalVars.jquery;
+      window.socket = globalVars.io();
+    </script>
+  </header>
+
+  <body>
+    <section class="hero is-fullheight" id="main-page">
+      <div class="hero-body">
+        <div class="box" style="margin: auto">
+          <div
+            class="has-text-centered is-size-1 is-uppercase has-text-weight-bold"
+          >
+            uno
+          </div>
+          <hr />
+          <form id="form-main-page" action="">
+            <div class="field has-addons">
+              <p class="control has-icons-left is-expanded">
+                <input
+                  class="input"
+                  type="text"
+                  id="game"
+                  placeholder="Game Name"
+                />
+                <span class="icon is-medium is-left">
+                  <i class="fas fa-gamepad"></i>
+                </span>
+              </p>
+              <div class="control">
+                <button class="button is-info">
+                  Go
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script src="./index.js"></script>
+</html>
