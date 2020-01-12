@@ -230,6 +230,6 @@ function checkStart(io, game) {
 }
 
 //RUN SERVER
-http.listen(port, "0.0.0.0", () => {
+http.listen(port, () => {
   console.log("Starting server on port " + port);
 });
