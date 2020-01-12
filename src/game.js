@@ -307,7 +307,7 @@ function selectCard(card, back = false, newColor = false) {
   let name = "Card " + card.color + " " + card.value;
   altTitle = "' alt='" + name + "' title='" + name + "'>";
 
-  let start = "src='dist/images/";
+  let start = "src='/node/uno/dist/images/";
   //let image = "card.jpg";
   let image = card.color + card.value + ".jpg";
 
