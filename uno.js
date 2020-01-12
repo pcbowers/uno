@@ -3,7 +3,7 @@ const session = require("express-session");
 const http = require("http").createServer(app);
 const path = require("path");
 const port = process.env.PORT || 3001;
-const io = require("socket.io")(http);
+const io = require("socket.io")(http, {path: "/node/uno/socket.io"});
 const Game = require("./includes/Game");
 const uuid = require("uuid/v1");
 const presets = require("./includes/presets");
@@ -60,6 +60,7 @@ CHEAT-SHEET
   io.in(game).emit(id, vars);
 
 */
+
 io.use((socket, next) => {
   sessionMiddleware(socket.request, socket.request.res, next);
 });

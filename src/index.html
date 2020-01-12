@@ -9,7 +9,9 @@
     <script src="./globals.js"></script>
     <script>
       window.$ = globalVars.jquery;
-      window.socket = globalVars.io();
+      window.socket = globalVars.io({
+        path: "/node/uno/socket.io"
+      });
     </script>
   </header>
 

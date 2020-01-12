@@ -18,6 +18,7 @@
 
       window.$ = globalVars.jquery;
       window.socket = globalVars.io({
+        path: "/node/uno/socket.io",
         query: {
           path: title
         }
