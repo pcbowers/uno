@@ -20,7 +20,7 @@ const entryFiles = [
 const Bundler = require("parcel-bundler");
 const bundlerOptions = {
   global: "globalVars",
-  publicUrl: "dist"
+  publicUrl: "/node/uno/dist"
 };
 const bundler = new Bundler(entryFiles, bundlerOptions);
 
