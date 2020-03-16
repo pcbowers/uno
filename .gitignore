@@ -1,4 +1,4 @@
 node_modules
 .cache
-dist
-!dist/images
+dist/*
+!dist/images/*
